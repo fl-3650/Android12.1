@@ -3,10 +3,13 @@ package com.example.android121;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final TextView textView = findViewById(R.id.userTextView);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
                 String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-                // use later
+                textView.setText(id + name);
             }
             cursor.close();
         }
